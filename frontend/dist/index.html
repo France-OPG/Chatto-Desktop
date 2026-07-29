@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<title>Chatto Desktop</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- Screen 1: language selection (always first) -->
+    <section id="screen-lang" class="screen active">
+      <div class="card">
+        <img class="logo" src="logo.png" alt="Chatto" onerror="this.style.display='none'" />
+        <h1>Chatto Desktop</h1>
+        <p id="lang-prompt">Choose your language</p>
+        <div id="lang-grid" class="lang-grid"></div>
+      </div>
+    </section>
+
+    <!-- Screen 2a: no base.cd found -> create or import -->
+    <section id="screen-base-choice" class="screen">
+      <div class="card">
+        <h2 data-i18n="baseChoiceTitle"></h2>
+        <button id="btn-create-base" data-i18n="createBase"></button>
+        <button id="btn-import-base" class="secondary" data-i18n="importBase"></button>
+      </div>
+    </section>
+
+    <!-- Screen 2b: create a brand new vault password -->
+    <section id="screen-create-pass" class="screen">
+      <div class="card">
+        <h2 data-i18n="createPassTitle"></h2>
+        <input type="password" id="input-new-pass" data-i18n-placeholder="password" />
+        <input type="password" id="input-new-pass-confirm" data-i18n-placeholder="confirmPassword" />
+        <button id="btn-confirm-create" data-i18n="continueBtn"></button>
+        <p class="error" id="create-error"></p>
+      </div>
+    </section>
+
+    <!-- Screen 2c: import an existing base.cd from elsewhere -->
+    <section id="screen-import" class="screen">
+      <div class="card">
+        <h2 data-i18n="importTitle"></h2>
+        <input type="text" id="input-import-path" data-i18n-placeholder="baseFilePath" />
+        <input type="password" id="input-import-pass" data-i18n-placeholder="password" />
+        <button id="btn-confirm-import" data-i18n="continueBtn"></button>
+        <p class="error" id="import-error"></p>
+      </div>
+    </section>
+
+    <!-- Screen 3: base.cd already exists next to the exe -> ask password -->
+    <section id="screen-unlock" class="screen">
+      <div class="card">
+        <h2 data-i18n="unlockTitle"></h2>
+        <input type="password" id="input-unlock-pass" data-i18n-placeholder="password" />
+        <button id="btn-confirm-unlock" data-i18n="unlock"></button>
+        <p class="error" id="unlock-error"></p>
+      </div>
+    </section>
+
+    <!-- Screen 4: main app, servers sidebar -->
+    <section id="screen-main" class="screen">
+      <div class="layout">
+        <aside class="sidebar">
+          <div class="sidebar-header">
+            <span data-i18n="servers"></span>
+            <button id="btn-add-server" title="+">+</button>
+          </div>
+          <ul id="server-list"></ul>
+          <div class="sidebar-footer">
+            <button id="btn-export" data-i18n="exportBase"></button>
+          </div>
+        </aside>
+        <main class="content">
+          <div id="empty-state" data-i18n="selectServer"></div>
+        </main>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Modal: add server -->
+  <div id="modal-add-server" class="modal hidden">
+    <div class="modal-card">
+      <h3 data-i18n="addServerTitle"></h3>
+      <input type="text" id="input-server-name" data-i18n-placeholder="serverName" />
+      <input type="text" id="input-server-url" data-i18n-placeholder="serverUrl" />
+      <input type="text" id="input-server-user" data-i18n-placeholder="username" />
+      <input type="password" id="input-server-pass" data-i18n-placeholder="password" />
+      <input type="password" id="input-vault-pass-confirm" data-i18n-placeholder="password" />
+      <div class="modal-actions">
+        <button id="btn-cancel-add-server" class="secondary" data-i18n="cancel"></button>
+        <button id="btn-save-server" data-i18n="save"></button>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="i18n.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

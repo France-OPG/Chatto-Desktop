@@ -1,0 +1,11 @@
+{
+  "$schema": "https://wails.io/schemas/config.v2.json",
+  "name": "chatto-desktop",
+  "outputfilename": "chatto-desktop",
+  "frontend:install": "",
+  "frontend:build": "",
+  "frontend:dev:watcher": "",
+  "author": {
+    "name": "MiTiV Studio Records"
+  }
+}
