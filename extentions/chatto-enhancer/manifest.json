@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "Chatto Enhancer",
+  "version": "1.2.2",
+  "description": "Adds per-person volume sliders in voice calls and an emoji picker in the message box.",
+  "permissions": [
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.chatto.run/*",
+        "https://chatto.pixel-box.net/*"
+      ],
+      "js": [
+        "main-world.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN",
+      "all_frames": false
+    },
+    {
+      "matches": [
+        "https://chat.chatto.run/*",
+        "https://chatto.pixel-box.net/*"
+      ],
+      "js": [
+        "emoji-data.js",
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ]
+}
